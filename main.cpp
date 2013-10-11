@@ -4,6 +4,7 @@
 using namespace std;
 
 void runMainLoop(int val){
+    next_young();
     update();
     render();
     glutTimerFunc(1000/FPS,runMainLoop,0);

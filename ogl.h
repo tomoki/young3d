@@ -6,7 +6,7 @@
 
 const int WIDTH = 800;
 const int HEIGHT = 600;
-const int FPS = 60;
+const int FPS = 1;
 
 bool initGL();
 void update();

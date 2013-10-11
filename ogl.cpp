@@ -87,7 +87,7 @@ void draw_line(int n){
     for(int i=0;i<young_size*2-1;i++){
         if(r == -1){
             c++;
-        }else if(c == -1){
+        }else if(c == young_size){
             r--;
         }else{
             if(top[r][c] > n){
@@ -122,7 +122,7 @@ void render(){
 void handleKey(unsigned char key,int x,int y){
     if(key == 'n'){
         top = next_young();
-        cout << cnt << " " << top << endl;
+        //cout << cnt << " " << top << endl;
     }else if(key == 'c'){
         young_size = 0;
         cnt = 0;
@@ -136,7 +136,7 @@ vii next_young(){
         young_size++;
         // 5 is too big!
         if(young_size == 5) young_size = 1;
-        //cnt = 0;
+        cnt = 0;
         vii initial(young_size,vi(young_size));
         vector<vii> ys;
         get_young(young_size,ys,initial,0,0);
@@ -147,8 +147,8 @@ vii next_young(){
     vii t = youngs.front();
     cnt++;
     youngs.pop();
-
-    return t;
+    cout << cnt << " " << top << endl;
+    return top=t;
 }
 
 void handleMouse(int button,int state,int x,int y){
@@ -164,8 +164,7 @@ void handleMouse(int button,int state,int x,int y){
     case GLUT_UP:
         break;
     case GLUT_DOWN:
-        top = next_young();
-        cout << cnt << " " << top << endl;
+        next_young();
         break;
     default:
         break;
