@@ -8,7 +8,10 @@ PROGRAM = young
 all: $(PROGRAM)
 
 $(PROGRAM):$(OBJS)
-	$(CPP) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) -o $(PROGRAM)
+	$(CPP) $(OBJS) $(CFLAGS) $(LDFLAGS) $(LIBS) -o $(PROGRAM)
+
+.cpp.o:
+	$(CPP) $(CFLAGS) -c $<
 
 clean:;
 	rm -f *.o
