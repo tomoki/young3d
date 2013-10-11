@@ -8,9 +8,6 @@ const int WIDTH = 800;
 const int HEIGHT = 600;
 const int FPS = 60;
 
-vii top;
-queue<vii> youngs;
-int young_size = 0;
 
 bool initGL();
 void update();

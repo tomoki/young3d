@@ -1,6 +1,11 @@
 #include "mylib.h"
 #include "ogl.h"
 
+vii top;
+queue<vii> youngs;
+int young_size = 0;
+int cnt = 0;
+
 bool initGL(){
     //Initialize Projection Matrix
     glMatrixMode(GL_PROJECTION);
@@ -72,6 +77,10 @@ void cube(GLdouble x,GLdouble y,GLdouble z){
     glPopMatrix();
 }
 
+void draw_line(int n){
+    double y = n + 0.5;
+}
+
 void render(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -88,6 +97,7 @@ void render(){
 void handleKey(unsigned char key,int x,int y){
     if(key == 'n'){
         top = next_young();
+        cout << cnt << " " << top << endl;
     }
 }
 
@@ -96,6 +106,7 @@ vii next_young(){
         young_size++;
         // 5 is too big!
         if(young_size == 5) young_size = 1;
+        cnt = 0;
         vii initial(young_size,vi(young_size));
         vector<vii> ys;
         get_young(young_size,ys,initial,0,0);
@@ -104,33 +115,27 @@ vii next_young(){
         }
     }
     vii t = youngs.front();
+    cnt++;
     youngs.pop();
+
     return t;
 }
 
 void handleMouse(int button,int state,int x,int y){
     switch (button) {
     case GLUT_LEFT_BUTTON:
-        printf("left");
-        break;
-    case GLUT_MIDDLE_BUTTON:
-        printf("middle");
-        break;
-    case GLUT_RIGHT_BUTTON:
-        printf("right");
+
         break;
     default:
         break;
     }
 
-    printf(" button is ");
-
     switch (state) {
     case GLUT_UP:
-        printf("up");
         break;
     case GLUT_DOWN:
-        printf("down");
+        top = next_young();
+        cout << cnt << " " << top << endl;
         break;
     default:
         break;
