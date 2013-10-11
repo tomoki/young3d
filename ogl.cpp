@@ -79,13 +79,27 @@ void cube(GLdouble x,GLdouble y,GLdouble z){
 
 void draw_line(int n){
     double y = n + 0.5;
+    int r = young_size-1;int c = 0;
     glColor3dv(red.data());
-
     glBegin(GL_LINE_STRIP);
-
-    glVertex3d(young_size,y,0);
-    glVertex3d(young_size,y,young_size);
+    // start.
     glVertex3d(0,y,young_size);
+    for(int i=0;i<young_size*2-1;i++){
+        if(r == -1){
+            c++;
+        }else if(c == -1){
+            r--;
+        }else{
+            if(top[r][c] > n){
+                c++;
+            }else{
+                r--;
+            }
+        }
+        glVertex3d(c,y,r+1);
+    }
+    //glVertex3d(young_size,y,young_size);
+    glVertex3d(young_size,y,0);
     glEnd();
 }
 
