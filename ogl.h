@@ -8,7 +8,6 @@ const int WIDTH = 800;
 const int HEIGHT = 600;
 const int FPS = 60;
 
-
 bool initGL();
 void update();
 void render();
@@ -62,4 +61,5 @@ const vector<vector<GLdouble>> facecolor = {
     { 0.0, 1.0, 1.0 }
 };
 
+const vector<GLdouble> red = {1,0,0};
 #endif

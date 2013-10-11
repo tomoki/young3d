@@ -79,6 +79,14 @@ void cube(GLdouble x,GLdouble y,GLdouble z){
 
 void draw_line(int n){
     double y = n + 0.5;
+    glColor3dv(red.data());
+
+    glBegin(GL_LINE_STRIP);
+
+    glVertex3d(young_size,y,0);
+    glVertex3d(young_size,y,young_size);
+    glVertex3d(0,y,young_size);
+    glEnd();
 }
 
 void render(){
@@ -91,6 +99,9 @@ void render(){
             }
         }
     }
+    for(int n=0;n<young_size;n++){
+        draw_line(n);
+    }
     glutSwapBuffers();
 }
 
@@ -98,6 +109,11 @@ void handleKey(unsigned char key,int x,int y){
     if(key == 'n'){
         top = next_young();
         cout << cnt << " " << top << endl;
+    }else if(key == 'c'){
+        young_size = 0;
+        cnt = 0;
+        queue<vii> emp;
+        swap(youngs,emp);
     }
 }
 
@@ -106,7 +122,7 @@ vii next_young(){
         young_size++;
         // 5 is too big!
         if(young_size == 5) young_size = 1;
-        cnt = 0;
+        //cnt = 0;
         vii initial(young_size,vi(young_size));
         vector<vii> ys;
         get_young(young_size,ys,initial,0,0);
@@ -140,6 +156,5 @@ void handleMouse(int button,int state,int x,int y){
     default:
         break;
     }
-
-    printf(" at (%d, %d)\n", x, y);
+    //printf(" at (%d, %d)\n", x, y);
 }
