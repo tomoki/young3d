@@ -25,6 +25,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 #include <GL/gl.h>
+#include <GL/glu.h>
 
 #define all(c) c.begin(),c.end()
 #define rep(i,n) for(int i=0;i<(int)n;i++)

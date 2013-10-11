@@ -4,5 +4,6 @@
 
 void sdldie(const string);
 void checkSDLError(int);
+void setupwindow(SDL_Window**,SDL_GLContext*,int,int);
 
 #endif

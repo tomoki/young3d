@@ -42,15 +42,16 @@ void get_young(const int N,vector<vii> &all_young,vii & matrix,int r=0,int c=0){
     }
     return;
 }
-int main(){
-    int N = 5;
-    vector<vii> v;
-    vii init(N,vi(N));
-    get_young(N,v,init);
-    // for(const vii& a : v){
-    //     cout << a << endl;
-    // }
-    cout << v.size() << endl;
 
-    return 0;
-}
+// int main(){
+//     int N = 5;
+//     vector<vii> v;
+//     vii init(N,vi(N));
+//     get_young(N,v,init);
+//     // for(const vii& a : v){
+//     //     cout << a << endl;
+//     // }
+//     cout << v.size() << endl;
+
+//     return 0;
+// }
