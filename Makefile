@@ -2,7 +2,7 @@ CPP = g++
 CFLAGS = -O2 -std=c++11 -Wall `sdl2-config --cflags`
 LDFLAGS = -L/usr/lib
 LIBS = -lGL `sdl2-config --libs`
-OBJS = main.o
+OBJS = main.o sdllib.o
 PROGRAM = young
 
 all: $(PROGRAM)
