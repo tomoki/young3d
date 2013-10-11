@@ -12,7 +12,7 @@ void runMainLoop(int val){
 int main(int argc,char**argv){
     glutInit(&argc,argv);
     glutInitContextVersion(2,1);
-    glutInitDisplayMode(GLUT_DOUBLE);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
     glutInitWindowSize(WIDTH,HEIGHT);
     glutCreateWindow("Young");
 
@@ -20,7 +20,10 @@ int main(int argc,char**argv){
         cerr << "opengl error" << endl;
         return 1;
     }
+    glutKeyboardFunc(handleKey);
+    glutMouseFunc(handleMouse);
     glutDisplayFunc(render);
+    glutReshapeFunc(resize);
     glutTimerFunc(1000/FPS,runMainLoop,0);
     glutMainLoop();
     return 0;
